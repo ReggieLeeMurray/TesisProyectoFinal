@@ -9,7 +9,7 @@ const routes: Routes = [
 {path: 'editar/:id', component: AgregarEmpleadoComponent},
 {path: 'ver/:id', component: VerEmpleadosComponent},
 {path: '', component: ListaEmpleadosComponent, pathMatch: 'full'},
-
+{path: '**', redirectTo: '/'},
 
 ];
 
