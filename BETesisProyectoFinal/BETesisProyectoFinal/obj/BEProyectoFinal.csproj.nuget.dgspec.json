@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Reggie\\Desktop\\TesisProyectoFinal\\TesisProyectoFinal\\BETesisProyectoFinal\\BETesisProyectoFinal\\BETesisProyectoFinal.csproj": {}
+    "C:\\Users\\Reggie\\Desktop\\TesisProyectoFinal\\TesisProyectoFinal\\BETesisProyectoFinal\\BETesisProyectoFinal\\BEProyectoFinal.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Reggie\\Desktop\\TesisProyectoFinal\\TesisProyectoFinal\\BETesisProyectoFinal\\BETesisProyectoFinal\\BETesisProyectoFinal.csproj": {
+    "C:\\Users\\Reggie\\Desktop\\TesisProyectoFinal\\TesisProyectoFinal\\BETesisProyectoFinal\\BETesisProyectoFinal\\BEProyectoFinal.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Reggie\\Desktop\\TesisProyectoFinal\\TesisProyectoFinal\\BETesisProyectoFinal\\BETesisProyectoFinal\\BETesisProyectoFinal.csproj",
-        "projectName": "BETesisProyectoFinal",
-        "projectPath": "C:\\Users\\Reggie\\Desktop\\TesisProyectoFinal\\TesisProyectoFinal\\BETesisProyectoFinal\\BETesisProyectoFinal\\BETesisProyectoFinal.csproj",
+        "projectUniqueName": "C:\\Users\\Reggie\\Desktop\\TesisProyectoFinal\\TesisProyectoFinal\\BETesisProyectoFinal\\BETesisProyectoFinal\\BEProyectoFinal.csproj",
+        "projectName": "BEProyectoFinal",
+        "projectPath": "C:\\Users\\Reggie\\Desktop\\TesisProyectoFinal\\TesisProyectoFinal\\BETesisProyectoFinal\\BETesisProyectoFinal\\BEProyectoFinal.csproj",
         "packagesPath": "C:\\Users\\Reggie\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\Reggie\\Desktop\\TesisProyectoFinal\\TesisProyectoFinal\\BETesisProyectoFinal\\BETesisProyectoFinal\\obj\\",
         "projectStyle": "PackageReference",
