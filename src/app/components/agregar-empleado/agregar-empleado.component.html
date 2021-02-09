@@ -1,6 +1,6 @@
 <div class="row" style="padding-top: 10px">
   <div class="col-lg-6">
-    <h3>Nuevo Empleado</h3>
+    <h3>{{ accion }} Empleado</h3>
   </div>
 </div>
 <br />
@@ -18,7 +18,10 @@
     </div>
     <span
       class="text-danger ml-3"
-      *ngIf="empleadosForm.get('nombre').hasError('required')"
+      *ngIf="
+        empleadosForm.get('nombre').hasError('required') &&
+        empleadosForm.get('nombre').touched
+      "
     >
       Los nombres del colaborador son requeridos</span
     >
@@ -33,7 +36,10 @@
     </div>
     <span
       class="text-danger ml-3"
-      *ngIf="empleadosForm.get('apellido').hasError('required')"
+      *ngIf="
+        empleadosForm.get('apellido').hasError('required') &&
+        empleadosForm.get('apellido').touched
+      "
     >
       Los apellidos del colaborador son requeridos</span
     >
@@ -51,11 +57,14 @@
   </div>
   <span
     class="text-danger ml-3"
-    *ngIf="empleadosForm.get('direccion').hasError('required')"
+    *ngIf="
+      empleadosForm.get('direccion').hasError('required') &&
+      empleadosForm.get('direccion').touched
+    "
   >
     La direccion completa del colaborador es requerida</span
   >
-  <div class="form-group col-md-6">
+  <div class="form-group col-md-2">
     <label for="inputcedula" style="padding-top: 10px">Numero de Cedula</label>
     <input
       type="text"
@@ -66,11 +75,14 @@
   </div>
   <span
     class="text-danger ml-3"
-    *ngIf="empleadosForm.get('n_cedula').hasError('required')"
+    *ngIf="
+      empleadosForm.get('n_cedula').hasError('required') &&
+      empleadosForm.get('n_cedula').touched
+    "
   >
     El numero de cedula del colaborador es requerida</span
   >
-  <div class="form-group col-md-4">
+  <div class="form-group col-md-2">
     <label for="inputDepto" style="padding-top: 10px">Departamento</label>
     <select formControlName="depto" class="form-control">
       <option selected>Choose...</option>
@@ -79,7 +91,10 @@
   </div>
   <span
     class="text-danger ml-3"
-    *ngIf="empleadosForm.get('depto').hasError('required')"
+    *ngIf="
+      empleadosForm.get('depto').hasError('required') &&
+      empleadosForm.get('depto').touched
+    "
   >
     El departamento en el que colaborador se encuentra es requerida</span
   >
@@ -90,19 +105,25 @@
     </div>
     <span
       class="text-danger ml-3"
-      *ngIf="empleadosForm.get('salariobase').hasError('required')"
+      *ngIf="
+        empleadosForm.get('salariobase').hasError('required') &&
+        empleadosForm.get('salariobase').touched
+      "
     >
       El salario del colaborador es requerido</span
     >
     <div class="col-lg-6" style="padding-top: 10px">
       <tr>
         <td>
-          <button class="btn btn-success">Agregar Empleado</button>
+          <button class="btn btn-success" [disabled]="empleadosForm.invalid">
+            {{ accion }} Empleado
+          </button>
         </td>
         <td>
           <button
             class="btn btn-secondary"
             style="margin-left: 20px; margin: 10px"
+            [routerLink]="['/']"
           >
             Cancelar
           </button>
