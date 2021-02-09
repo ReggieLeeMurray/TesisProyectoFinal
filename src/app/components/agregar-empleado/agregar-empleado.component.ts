@@ -17,6 +17,7 @@ export class AgregarEmpleadoComponent implements OnInit {
       apellido:['', Validators.required],
       n_cedula:['', Validators.required],
       fechaingreso:['', Validators.required],
+      direccion:['', Validators.required],
       depto:['', Validators.required],
       salariobase:['', Validators.required],
     })
@@ -24,5 +25,7 @@ export class AgregarEmpleadoComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  guardarEmpleados(){
+  console.log(this.empleadosForm)
+  }
 }
