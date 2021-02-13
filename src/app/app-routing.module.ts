@@ -5,12 +5,13 @@ import { ListaEmpleadosComponent } from './components/lista-empleados/lista-empl
 import { VerEmpleadosComponent } from './components/ver-empleados/ver-empleados.component';
 
 const routes: Routes = [
-{path: 'agregar', component: AgregarEmpleadoComponent},
-{path: 'editar/:id', component: AgregarEmpleadoComponent},
-{path: 'ver/:id', component: VerEmpleadosComponent},
-{path: '', component: ListaEmpleadosComponent, pathMatch: 'full'},
-{path: '**', redirectTo: '/'},
-
+  { path: '', pathMatch: 'full', redirectTo: '/welcome' },
+  { path: 'welcome', loadChildren: () => import('./pages/welcome/welcome.module').then(m => m.WelcomeModule) },
+  {path: 'agregar', component: AgregarEmpleadoComponent},
+  {path: 'editar/:id', component: AgregarEmpleadoComponent},
+  {path: 'ver/:id', component: VerEmpleadosComponent},
+  {path: '', component: ListaEmpleadosComponent, pathMatch: 'full'},
+  {path: '**', redirectTo: '/'},
 ];
 
 @NgModule({
