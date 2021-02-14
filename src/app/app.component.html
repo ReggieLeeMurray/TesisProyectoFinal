@@ -1,18 +1,23 @@
 <nz-layout class="app-layout">
-  <nz-sider class="menu-sidebar"
-            nzCollapsible
-            nzWidth="256px"
-            nzBreakpoint="md"
-            [(nzCollapsed)]="isCollapsed"
-            [nzTrigger]="null">
+  <nz-sider
+    class="menu-sidebar"
+    nzCollapsible
+    nzWidth="256px"
+    nzBreakpoint="md"
+    [(nzCollapsed)]="isCollapsed"
+    [nzTrigger]="null"
+  >
     <div class="sidebar-logo">
-      <a href="https://ng.ant.design/" target="_blank">
-        <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo">
-        <h1>Ant Design Of Angular</h1>
-      </a>
+      <img src="https://image.flaticon.com/icons/png/512/124/124065.png" />
+      <h1>Calculadora de Planilla</h1>
     </div>
-    <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
-      <li nz-submenu nzOpen nzTitle="Dashboard" nzIcon="dashboard">
+    <ul
+      nz-menu
+      nzTheme="dark"
+      nzMode="inline"
+      [nzInlineCollapsed]="isCollapsed"
+    >
+      <!-- <li nz-submenu nzOpen nzTitle="Dashboard" nzIcon="dashboard">
         <ul>
           <li nz-menu-item nzMatchRouter>
             <a routerLink="/welcome">Welcome</a>
@@ -24,11 +29,24 @@
             <a>Workplace</a>
           </li>
         </ul>
-      </li>
-      <li nz-submenu nzOpen nzTitle="Form" nzIcon="form">
+      </li> -->
+      <li nz-submenu nzOpen nzTitle="Dashboard" nzIcon="dashboard">
         <ul>
           <li nz-menu-item nzMatchRouter>
-            <a>Basic Form</a>
+            <a routerLink="/welcome">Welcome</a>
+          </li>
+        </ul>
+      </li>
+      <li nz-submenu nzOpen nzTitle="Empleados" nzIcon="form">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/listado">Listado Empleados</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/agregar">Agregar Empleados</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/editar">Editar Empleados</a>
           </li>
         </ul>
       </li>
@@ -38,10 +56,11 @@
     <nz-header>
       <div class="app-header">
         <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
-            <i class="trigger"
-               nz-icon
-               [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
-            ></i>
+          <i
+            class="trigger"
+            nz-icon
+            [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+          ></i>
         </span>
       </div>
     </nz-header>

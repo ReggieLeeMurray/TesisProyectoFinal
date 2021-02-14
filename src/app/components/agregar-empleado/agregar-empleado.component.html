@@ -3,6 +3,9 @@
     <h3>{{ accion }} Empleado</h3>
   </div>
 </div>
+<div class="spinner-border" role="status" *ngIf="loading">
+  <span class="sr-only">Cargando...</span>
+</div>
 <br />
 
 <form [formGroup]="empleadosForm" (ngSubmit)="guardarEmpleados()">
@@ -13,7 +16,7 @@
         type="text"
         class="form-control"
         formControlName="nombre"
-        placeholder="ex. Pablo Lara , Maria Jose"
+        placeholder="ej. Pablo Lara , Maria Jose"
       />
     </div>
     <span
@@ -25,13 +28,14 @@
     >
       Los nombres del colaborador son requeridos</span
     >
+
     <div class="form-group col-md-4">
       <label for="inputApellidos" style="padding-top: 10px">Apellidos</label>
       <input
         type="text"
         class="form-control"
         formControlName="apellido"
-        placeholder="ex. Mendez Hernandez, Romero Sanchez"
+        placeholder="ej. Mendez Hernandez, Romero Sanchez"
       />
     </div>
     <span
@@ -52,7 +56,7 @@
       type="text"
       class="form-control"
       formControlName="direccion"
-      placeholder="ex. Colonia, # de Bloque y Casa"
+      placeholder="ej. Colonia, # de Bloque y Casa"
     />
   </div>
   <span
@@ -65,12 +69,12 @@
     La direccion completa del colaborador es requerida</span
   >
   <div class="form-group col-md-2">
-    <label for="inputcedula" style="padding-top: 10px">Numero de Cedula</label>
+    <label for="inputCedula" style="padding-top: 10px">Número de Cedula</label>
     <input
-      type="text"
+      type="number"
       class="form-control"
       formControlName="n_cedula"
-      placeholder="0000-0000-00000"
+      placeholder="ej. 0501151202154"
     />
   </div>
   <span
@@ -84,10 +88,12 @@
   >
   <div class="form-group col-md-2">
     <label for="inputDepto" style="padding-top: 10px">Departamento</label>
-    <select formControlName="depto" class="form-control">
-      <option selected>Choose...</option>
-      <option>...</option>
-    </select>
+    <input
+      type="text"
+      class="form-control"
+      formControlName="depto"
+      placeholder="ej. Contabilidad, etc."
+    />
   </div>
   <span
     class="text-danger ml-3"
@@ -96,12 +102,12 @@
       empleadosForm.get('depto').touched
     "
   >
-    El departamento en el que colaborador se encuentra es requerida</span
+    El departamento en el que colaborador es requerida</span
   >
   <div class="form-row">
     <div class="form-group col-md-1">
       <label for="inputSalario" style="padding-top: 10px">Salario Neto</label>
-      <input type="text" class="form-control" formControlName="salariobase" />
+      <input type="number" class="form-control" formControlName="salariobase" />
     </div>
     <span
       class="text-danger ml-3"

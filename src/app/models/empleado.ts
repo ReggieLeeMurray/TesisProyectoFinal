@@ -1,10 +1,10 @@
 export class Empleado {
     id?: number;
-    nombre: string;
-    apellido: string;
-    n_cedula: number;
+    nombres: string;
+    apellidos: string;
+    n_Cedula: number;
     direccion: string;
-    fechaingreso: Date;
+    fechaIngreso: Date;
     depto: string;
-    salariobase: number;
+    salarioBase: number;
 }

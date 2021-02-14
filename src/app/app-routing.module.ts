@@ -6,12 +6,12 @@ import { VerEmpleadosComponent } from './components/ver-empleados/ver-empleados.
 
 
 const routes: Routes = [
- // { path: '', pathMatch: 'full', redirectTo: '/welcome' },
- // { path: 'welcome', loadChildren: () => import('./pages/welcome/welcome.module').then(m => m.WelcomeModule) },
+  { path: '', pathMatch: 'full', redirectTo: '/welcome' },
+  { path: 'welcome', loadChildren: () => import('./pages/welcome/welcome.module').then(m => m.WelcomeModule) },
   { path: 'agregar', component: AgregarEmpleadoComponent},
   { path: 'editar/:id', component: AgregarEmpleadoComponent},
   { path: 'ver/:id', component: VerEmpleadosComponent},
-  { path: '', component: ListaEmpleadosComponent, pathMatch: 'full'},
+  { path: 'listado', component: ListaEmpleadosComponent, pathMatch: 'full'},
   { path: '**', redirectTo: '/'},
 ];
 

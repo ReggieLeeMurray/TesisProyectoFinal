@@ -49,7 +49,7 @@ namespace BETesisProyectoFinal.Controllers
         {
           return NotFound();
         }
-        return Ok();
+        return Ok(empleados);
       }
       catch (Exception ex)
       {

@@ -2,55 +2,49 @@
   <div class="col-lg-6">
     <h3>Lista de Empleados</h3>
   </div>
-  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-    <button class="btn btn-primary float-right" [routerLink]="['/agregar']">
-      Nuevo Empleado
-    </button>
-  </div>
+</div>
+<div class="spinner-border" role="status" *ngIf="loading">
+  <span class="sr-only">Cargando...</span>
 </div>
 <br />
 <table class="table table-sm table-hover">
   <thead>
     <tr>
-      <th scope="col">#</th>
+      <th scope="col">ID</th>
       <th scope="col">Nombres</th>
       <th scope="col">Apellidos</th>
       <th scope="col">N° Cedula</th>
+      <th scope="col">Direccion</th>
       <th scope="col">Fecha Ingreso</th>
       <th scope="col">Departamento</th>
       <th scope="col">Salario Base</th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>1</td>
-      <td>Humberto</td>
-      <td>Zen</td>
-      <td>0512-1972-01540</td>
-      <td>11/12/2011</td>
-      <td>Contabilidad</td>
-      <td>20000</td>
+    <tr *ngFor="let empleado of listEmpleados">
+      <td>{{ empleado.id }}</td>
+      <td>{{ empleado.nombres }}</td>
+      <td>{{ empleado.apellidos }}</td>
+      <td>{{ empleado.n_Cedula }}</td>
+      <td>{{ empleado.direccion }}</td>
+      <td>{{ empleado.fechaIngreso | date: "dd/MM/yyyy" }}</td>
+      <td>{{ empleado.depto }}</td>
+      <td>{{ empleado.salarioBase }}</td>
       <td>
-        <button class="btn btn-primary btn-sm" [routerLink]="['/editar', '1']">
+        <button
+          class="btn btn-primary btn-sm"
+          [routerLink]="['/editar', empleado.id]"
+        >
           Editar
         </button>
       </td>
-      <td><button class="btn btn-danger btn-sm">Eliminar</button></td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>Roberto</td>
-      <td>Shangai</td>
-      <td>0512-1978-15409</td>
-      <td>11/12/2010</td>
-      <td>Recursos Humanos</td>
-      <td>30000</td>
       <td>
-        <button class="btn btn-primary btn-sm" [routerLink]="['/editar', '2']">
-          Editar
+        <button class="btn btn-danger btn-sm" (click)="delete(empleado.id)">
+          Eliminar
         </button>
       </td>
-      <td><button class="btn btn-danger btn-sm">Eliminar</button></td>
     </tr>
   </tbody>
 </table>
