@@ -7,7 +7,7 @@
   <span class="sr-only">Cargando...</span>
 </div>
 <br />
-
+<!-- 
 <form [formGroup]="empleadosForm" (ngSubmit)="guardarEmpleados()">
   <div class="form-row">
     <div class="form-group col-md-4">
@@ -68,14 +68,35 @@
   >
     La direccion completa del colaborador es requerida</span
   >
+  <div class="form-group">
+    <label for="inputFecha" style="padding-top: 10px">Fecha Ingreso</label>
+    <nz-date-picker
+      style="padding-top: 5px"
+      style="padding-bottom: 5px"
+      [(ngModel)]="date"
+      (ngModelChange)="onChange($event)"
+      formControlName="fechaingreso"
+    ></nz-date-picker>
+  </div>
+
+  <span
+    class="text-danger ml-3"
+    *ngIf="
+      empleadosForm.get('fechaingreso').hasError('required') &&
+      empleadosForm.get('fechaingreso').touched
+    "
+  >
+    La fecha de ingreso del colaborador es requerida</span
+  >
   <div class="form-group col-md-2">
-    <label for="inputCedula" style="padding-top: 10px">Número de Cedula</label>
+    <label for="inputCedula" style="padding: top 10px">Número de Cedula</label>
     <input
       type="number"
       class="form-control"
       formControlName="n_cedula"
       placeholder="ej. 0501151202154"
     />
+    <br />
   </div>
   <span
     class="text-danger ml-3"
@@ -137,4 +158,104 @@
       </tr>
     </div>
   </div>
+</form> -->
+<form nz-form [formGroup]="empleadosForm" (ngSubmit)="guardarEmpleados()">
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="nombres"
+      >Nombres</nz-form-label
+    >
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <input
+        nz-input
+        type="text"
+        formControlName="nombre"
+        style="width: 90%"
+        placeholder="ej. Pablo Lara , Maria Jose"
+      />
+    </nz-form-control>
+  </nz-form-item>
+  <span
+    class="text-danger ml-3"
+    *ngIf="
+      empleadosForm.get('nombre').hasError('required') &&
+      empleadosForm.get('nombre').touched
+    "
+  >
+    Los nombres del colaborador son requeridos</span
+  >
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="apellidos"
+      >Apellidos</nz-form-label
+    >
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <input
+        nz-input
+        type="text"
+        formControlName="apellido"
+        style="width: 90%"
+        placeholder="ej. Mendez Hernandez, Romero Sanchez"
+      />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="direccion"
+      >Direccion Completa</nz-form-label
+    >
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <input
+        nz-input
+        type="text"
+        formControlName="direccion"
+        style="width: 150%"
+        placeholder="ej. Colonia, # de Bloque y Casa"
+      />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="n_cedula"
+      >Numero Cedula</nz-form-label
+    >
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <input
+        nz-input
+        type="number"
+        formControlName="n_cedula"
+        placeholder="ej. 0501151202154"
+      />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="depto"
+      >Departamento</nz-form-label
+    >
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <input nz-input type="text" formControlName="depto" />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="salario"
+      >Salario</nz-form-label
+    >
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <input nz-input type="number" formControlName="salariobase" />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="fechaingreso"
+      >Fecha Ingreso</nz-form-label
+    >
+    <nz-date-picker
+      [(ngModel)]="date"
+      (ngModelChange)="onChange($event)"
+      formControlName="fechaingreso"
+    ></nz-date-picker>
+  </nz-form-item>
+  <nz-form-control [nzSpan]="14" [nzOffset]="6">
+    <button nz-button nzType="primary" [disabled]="empleadosForm.invalid">
+      {{ accion }} Empleado
+    </button>
+  </nz-form-control>
+  <nz-form-control [nzSpan]="14" [nzOffset]="6">
+    <button nz-button nzType="default" [routerLink]="['/']">Cancelar</button>
+  </nz-form-control>
 </form>

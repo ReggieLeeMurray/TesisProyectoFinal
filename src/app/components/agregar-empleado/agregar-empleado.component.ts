@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Empleado } from 'src/app/models/empleado';
 import { EmpleadosService } from 'src/app/services/empleados.service';
+import getISOWeek from 'date-fns/getISOWeek';
 
 @Component({
   selector: 'app-agregar-empleado',
@@ -16,12 +17,14 @@ export class AgregarEmpleadoComponent implements OnInit {
   accion = 'Agregar';
   loading = false;
   empleado: Empleado;
+  isEnglish = false;
+  date=null;
 
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private empleadosService: EmpleadosService,
-    private router: Router
+    private router: Router,
   ) {
     this.empleadosForm = this.fb.group({
       nombre: ['', Validators.required],
@@ -29,6 +32,7 @@ export class AgregarEmpleadoComponent implements OnInit {
       n_cedula: ['', Validators.required],
       direccion: ['', Validators.required],
       depto: ['', Validators.required],
+      fechaingreso: ['', Validators.required],
       salariobase: ['', Validators.required],
     });
     if (+this.route.snapshot.paramMap.get('id') > 0) {
@@ -39,10 +43,11 @@ export class AgregarEmpleadoComponent implements OnInit {
   ngOnInit(): void {
     this.esEditar();
   }
+
   guardarEmpleados() {
     if (this.accion === 'Agregar') {
       const empleado: Empleado = {
-        fechaIngreso: new Date(),
+        fechaIngreso: this.empleadosForm.get('fechaingreso').value,
         nombres: this.empleadosForm.get('nombre').value,
         apellidos: this.empleadosForm.get('apellido').value,
         direccion: this.empleadosForm.get('direccion').value,
@@ -53,10 +58,10 @@ export class AgregarEmpleadoComponent implements OnInit {
       this.empleadosService.guardarEmpleados(empleado).subscribe((data) => {
         this.router.navigate(['/listado']);
       });
-    }else{
+    } else {
       const empleado: Empleado = {
         id: this.empleado.id,
-        fechaIngreso: this.empleado.fechaIngreso,
+        fechaIngreso: this.empleadosForm.get('fechaingreso').value,
         nombres: this.empleadosForm.get('nombre').value,
         apellidos: this.empleadosForm.get('apellido').value,
         direccion: this.empleadosForm.get('direccion').value,
@@ -64,9 +69,11 @@ export class AgregarEmpleadoComponent implements OnInit {
         depto: this.empleadosForm.get('depto').value,
         salarioBase: this.empleadosForm.get('salariobase').value,
       };
-      this.empleadosService.actualizarEmpleado(this.idEmpleado, empleado).subscribe(data =>{
-        this.router.navigate(['/listado']);
-      })
+      this.empleadosService
+        .actualizarEmpleado(this.idEmpleado, empleado)
+        .subscribe((data) => {
+          this.router.navigate(['/listado']);
+        });
     }
     console.log(this.empleadosForm);
   }
@@ -90,4 +97,14 @@ export class AgregarEmpleadoComponent implements OnInit {
         });
     }
   }
+  
+  onChange(result: Date): void {
+    console.log('onChange: ', result);
+  }
+
+  getWeek(result: Date): void {
+    console.log('week: ', getISOWeek(result));
+  }
+
+  
 }

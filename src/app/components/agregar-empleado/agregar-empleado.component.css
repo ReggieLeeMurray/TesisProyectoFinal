@@ -1,0 +1,11 @@
+nz-date-picker {
+  margin: 0 8px 12px 0;
+}
+
+[nz-form] {
+  max-width: 600px;
+}
+[nz-button] {
+  margin-right: 8px;
+  margin-bottom: 12px;
+}
