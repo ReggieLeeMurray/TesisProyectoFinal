@@ -15,7 +15,5 @@ namespace BETesisProyectoFinal.Models
     public DateTime FechaIngreso { get; set; }
     public string Depto { get; set; }
     public int SalarioBase { get; set; }
-
-
   }
 }
