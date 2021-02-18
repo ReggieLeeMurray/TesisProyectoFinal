@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 import { ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Empleado } from 'src/app/models/empleado';
+import { Departamento } from 'src/app/models/departamento';
 import { EmpleadosService } from 'src/app/services/empleados.service';
 import getISOWeek from 'date-fns/getISOWeek';
 
@@ -17,6 +18,7 @@ export class AgregarEmpleadoComponent implements OnInit {
   accion = 'Agregar';
   loading = false;
   empleado: Empleado;
+  departamento= Departamento;
   isEnglish = false;
   date=null;
 
