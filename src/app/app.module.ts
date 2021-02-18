@@ -23,6 +23,9 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzSelectModule } from 'ng-zorro-antd/select';
+
 registerLocaleData(en);
 
 @NgModule({
@@ -48,7 +51,9 @@ registerLocaleData(en);
     NzLayoutModule,
     NzMenuModule,
     NzFormModule,
+    NzButtonModule,
     NzInputModule,
+    NzSelectModule,
     NzDatePickerModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],

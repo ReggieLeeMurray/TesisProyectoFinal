@@ -228,9 +228,10 @@
     <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="depto"
       >Departamento</nz-form-label
     >
-    <nz-form-control [nzSm]="14" [nzXs]="24">
-      <input nz-input type="text" formControlName="depto" />
-    </nz-form-control>
+    <nz-select ngModel="lucy" nzPlaceHolder="Choose">
+      <nz-option nzValue="jack" nzLabel="Jack"></nz-option>
+      <!-- <nz-option nzValue="disabled" nzLabel="Disabled" nzDisabled></nz-option> -->
+    </nz-select>
   </nz-form-item>
   <nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="salario"

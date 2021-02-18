@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Empleado } from 'src/app/models/empleado';
 import { EmpleadosService } from 'src/app/services/empleados.service';
+import { NzButtonSize } from 'ng-zorro-antd/button';
 
 @Component({
   selector: 'app-lista-empleados',
@@ -8,9 +9,11 @@ import { EmpleadosService } from 'src/app/services/empleados.service';
   styleUrls: ['./lista-empleados.component.css'],
 })
 
+
 export class ListaEmpleadosComponent  implements OnInit {
 listEmpleados: Empleado[];
 loading = false;
+size: NzButtonSize = 'large';
 
   constructor(private EmpleadosService: EmpleadosService ) { }
 
@@ -36,3 +39,6 @@ loading = false;
    
 }
 
+export class NzDemoInputSearchInputComponent {}
+export class NzDemoButtonSizeComponent {}
+  

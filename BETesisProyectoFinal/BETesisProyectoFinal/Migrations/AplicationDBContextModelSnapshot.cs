@@ -17,6 +17,20 @@ namespace BEProyectoFinal.Migrations
                 .HasAnnotation("ProductVersion", "3.1.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
+            modelBuilder.Entity("BEProyectoFinal.Models.Departamentos", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Descripcion")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Departamentos");
+                });
+
             modelBuilder.Entity("BETesisProyectoFinal.Models.Empleados", b =>
                 {
                     b.Property<int>("Id")
@@ -26,8 +40,8 @@ namespace BEProyectoFinal.Migrations
                     b.Property<string>("Apellidos")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("Depto")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<int>("DepartamentoId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Direccion")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -35,8 +49,8 @@ namespace BEProyectoFinal.Migrations
                     b.Property<DateTime>("FechaIngreso")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int>("N_Cedula")
-                        .HasColumnType("int");
+                    b.Property<string>("N_Cedula")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Nombres")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -46,7 +60,18 @@ namespace BEProyectoFinal.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("DepartamentoId");
+
                     b.ToTable("Empleados");
+                });
+
+            modelBuilder.Entity("BETesisProyectoFinal.Models.Empleados", b =>
+                {
+                    b.HasOne("BEProyectoFinal.Models.Departamentos", "Departamento")
+                        .WithMany("Empleado")
+                        .HasForeignKey("DepartamentoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

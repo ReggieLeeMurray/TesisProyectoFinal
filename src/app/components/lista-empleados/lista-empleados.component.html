@@ -3,6 +3,24 @@
     <h3>Lista de Empleados</h3>
   </div>
 </div>
+<br />
+<div class="row" style="padding-top: 10px">
+  <div class="col-lg-6">
+    <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
+      <input type="text" nz-input placeholder="input search text" />
+    </nz-input-group>
+    <ng-template #suffixIconButton>
+      <button nz-button nzType="primary" nzSearch>
+        <i nz-icon style="padding-bottom: 10px" nzType="search"></i>
+      </button>
+    </ng-template>
+  </div>
+  <div class="col-lg-6">
+    <button type="button" style="float: inline-end" class="btn btn-primary">
+      Agregar Empleado
+    </button>
+  </div>
+</div>
 <div class="spinner-border" role="status" *ngIf="loading">
   <span class="sr-only">Cargando...</span>
 </div>
