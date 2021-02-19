@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Empleado } from '../models/empleado';
 import { Departamento } from '../models/departamento';
 
 @Injectable({
@@ -18,24 +17,24 @@ export class DepartamentosService {
   }
 
   constructor(private http: HttpClient) { }
-
+  //get
   getListDeptos(): Observable<Departamento[]> {
     return this.http.get<Departamento[]>(this.myAppUrl + this.myApiUrl);
   }
-
+  //delete
   deleteDeptos(id: number): Observable<Departamento> {
     return this.http.delete<Departamento>(this.myAppUrl + this.myApiUrl + id);
   }
-
+  //post
   guardarDeptos(depto: Departamento): Observable<Departamento> {
     return this.http.post<Departamento>(this.myAppUrl + this.myApiUrl, depto, this.httpOptions);
   }
-
+  //get id
   cargarDeptos(id: number): Observable<Departamento> {
     return this.http.get<Departamento>(this.myAppUrl + this.myApiUrl + id);
   }
-
-  actualizarDepto(id: number, depto: Empleado): Observable<Departamento> {
+  //put
+  actualizarDepto(id: number, depto: Departamento): Observable<Departamento> {
     return this.http.put<Departamento>(this.myAppUrl + this.myApiUrl + id, depto, this.httpOptions);
   }
 

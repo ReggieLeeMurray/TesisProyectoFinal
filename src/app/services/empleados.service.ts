@@ -17,15 +17,15 @@ export class EmpleadosService {
     }),
   };
   constructor(private http: HttpClient) { }
-
+  //get
   getListEmpleados(): Observable<Empleado[]> {
     return this.http.get<Empleado[]>(this.myAppUrl + this.myApiUrl);
   }
-
+  //delete
   deleteEmpleados(id: number): Observable<Empleado> {
     return this.http.delete<Empleado>(this.myAppUrl + this.myApiUrl + id);
   }
-
+  //post
   guardarEmpleados(empleado: Empleado): Observable<Empleado> {
     return this.http.post<Empleado>(
       this.myAppUrl + this.myApiUrl,
@@ -33,11 +33,11 @@ export class EmpleadosService {
       this.httpOptions
     );
   }
-
+  //get id
   cargarEmpleados(id: number): Observable<Empleado> {
     return this.http.get<Empleado>(this.myAppUrl + this.myApiUrl + id);
   }
-
+  //put
   actualizarEmpleado(id: number, empleado: Empleado): Observable<Empleado> {
     return this.http.put<Empleado>(
       this.myAppUrl + this.myApiUrl + id,
