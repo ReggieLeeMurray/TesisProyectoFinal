@@ -16,6 +16,7 @@ import getISOWeek from 'date-fns/getISOWeek';
 export class AgregarEmpleadoComponent implements OnInit {
   empleadosForm: FormGroup;
   idEmpleado = 0;
+  temporal = 0;
   idDepto = 0;
   accion = 'Agregar';
   loading = false;
