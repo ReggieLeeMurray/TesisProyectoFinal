@@ -13,6 +13,10 @@ namespace BEProyectoFinal
     public DbSet<Empleados> Empleados { get; set; }
 
     public DbSet<Departamentos> Departamentos { get; set; }
+    public DbSet<Usuarios> Usuarios { get; set; }
+
+    public DbSet<Roles> Roles { get; set; }
+
     public AplicationDBContext() { }
 
     public AplicationDBContext(DbContextOptions options) : base(options) { }

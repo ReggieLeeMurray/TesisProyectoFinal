@@ -162,6 +162,20 @@
 <form nz-form [formGroup]="empleadosForm" (ngSubmit)="guardarEmpleados()">
   <nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="nombres"
+      >Test</nz-form-label
+    >
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <input
+        nz-input
+        type="text"
+        formControlName="test"
+        style="width: 90%"
+        placeholder="ej. Pablo Lara , Maria Jose"
+      />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="nombres"
       >Nombres</nz-form-label
     >
     <nz-form-control [nzSm]="14" [nzXs]="24">
@@ -218,21 +232,38 @@
     <nz-form-control [nzSm]="14" [nzXs]="24">
       <input
         nz-input
-        type="number"
+        type="text"
         formControlName="n_cedula"
         placeholder="ej. 0501151202154"
       />
     </nz-form-control>
   </nz-form-item>
+
   <nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="depto"
-      >Departamento</nz-form-label
+      >Id Depto</nz-form-label
     >
-    <nz-select ngModel="lucy" nzPlaceHolder="Choose" formControlName="depto">
-      <nz-option nzValue="jack" nzLabel="Jack"></nz-option>
-      <!-- <nz-option nzValue="disabled" nzLabel="Disabled" nzDisabled></nz-option> -->
-    </nz-select>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <input
+        nz-input
+        type="number"
+        formControlName="depto"
+        placeholder="ej. 1,2,3,4"
+      />
+    </nz-form-control>
   </nz-form-item>
+
+  <!-- <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24">Departamento</nz-form-label>
+    <nz-select formControlName="depto" nzPlaceHolder="Choose">
+      <nz-option
+        *ngFor="let departamento of listDeptos"
+        nzValue="{{ departamento.id }}"
+        nzLabel="{{ departamento.descripcion }}"
+      ></nz-option>
+    </nz-select>
+  </nz-form-item> -->
+
   <nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="salario"
       >Salario</nz-form-label
@@ -249,7 +280,8 @@
       [(ngModel)]="date"
       (ngModelChange)="onChange($event)"
       formControlName="fechaingreso"
-    ></nz-date-picker>
+    >
+    </nz-date-picker>
   </nz-form-item>
   <nz-form-control [nzSpan]="14" [nzOffset]="6">
     <button nz-button nzType="primary" [disabled]="empleadosForm.invalid">

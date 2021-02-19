@@ -34,8 +34,8 @@
       <th scope="col">N° Cedula</th>
       <th scope="col">Direccion</th>
       <th scope="col">Fecha Ingreso</th>
-      <th scope="col">Departamento</th>
       <th scope="col">Salario Base</th>
+      <th scope="col">Id Departamento</th>
       <th></th>
       <th></th>
     </tr>
@@ -48,8 +48,8 @@
       <td>{{ empleado.n_Cedula }}</td>
       <td>{{ empleado.direccion }}</td>
       <td>{{ empleado.fechaIngreso | date: "dd/MM/yyyy" }}</td>
-      <td>{{ empleado.depto }}</td>
       <td>{{ empleado.salarioBase }}</td>
+      <td>{{ empleado.departamentoID }}</td>
       <td>
         <button
           class="btn btn-primary btn-sm"

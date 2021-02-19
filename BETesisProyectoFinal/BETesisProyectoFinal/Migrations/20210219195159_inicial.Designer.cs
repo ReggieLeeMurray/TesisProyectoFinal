@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BEProyectoFinal.Migrations
 {
     [DbContext(typeof(AplicationDBContext))]
-    [Migration("20210217224833_inicial")]
+    [Migration("20210219195159_inicial")]
     partial class inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,6 +26,7 @@ namespace BEProyectoFinal.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Descripcion")
+                        .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
@@ -40,21 +41,25 @@ namespace BEProyectoFinal.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Apellidos")
+                        .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int>("DepartamentoId")
+                    b.Property<int>("DepartamentoID")
                         .HasColumnType("int");
 
                     b.Property<string>("Direccion")
+                        .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<DateTime>("FechaIngreso")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("N_Cedula")
+                        .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Nombres")
+                        .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int>("SalarioBase")
@@ -62,16 +67,16 @@ namespace BEProyectoFinal.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DepartamentoId");
+                    b.HasIndex("DepartamentoID");
 
                     b.ToTable("Empleados");
                 });
 
             modelBuilder.Entity("BETesisProyectoFinal.Models.Empleados", b =>
                 {
-                    b.HasOne("BEProyectoFinal.Models.Departamentos", "Departamento")
-                        .WithMany("Empleado")
-                        .HasForeignKey("DepartamentoId")
+                    b.HasOne("BEProyectoFinal.Models.Departamentos", "Departamentos")
+                        .WithMany()
+                        .HasForeignKey("DepartamentoID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

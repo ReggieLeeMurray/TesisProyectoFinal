@@ -1,36 +1,37 @@
-using Microsoft.EntityFrameworkCore;
+using BEProyectoFinal.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using BEProyectoFinal;
-using BEProyectoFinal.Controllers;
-using BEProyectoFinal.Models;
+
+// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace BEProyectoFinal.Controllers
 {
   [Route("api/[controller]")]
   [ApiController]
-  public class DepartamentoController : Controller
+  public class UsuarioController : ControllerBase
   {
 
     private readonly AplicationDBContext _context;
 
-    public DepartamentoController(AplicationDBContext depto_context)
+
+    public UsuarioController(AplicationDBContext context)
     {
-      _context = depto_context;
+      _context = context;
     }
 
 
-    // GET: api/<DepartamentoController>
+    // GET: api/<UsuarioController>
     [HttpGet]
-    public ActionResult<List<Departamentos>> Get()
+    public ActionResult<List<Usuarios>> Get()
     {
       try
       {
-        var ListDepartamentos = _context.Departamentos.ToList();
-        return Ok(ListDepartamentos);
+        var ListUsuarios = _context.Usuarios.ToList();
+        return Ok(ListUsuarios);
       }
       catch (Exception ex)
       {
@@ -38,33 +39,31 @@ namespace BEProyectoFinal.Controllers
       }
     }
 
-    // GET api/<DepartamentoController>/5
+    // GET api/<UsuarioController>/5
     [HttpGet("{id}")]
-    public ActionResult<Departamentos> Get(int id)
+    public ActionResult<Usuarios> Get(int id)
     {
       try
       {
-        var deptos = _context.Departamentos.Find(id);
-        if (deptos == null)
+        var usuarios = _context.Usuarios.Find(id);
+        if (usuarios == null)
         {
           return NotFound();
         }
-        return Ok(deptos);
+        return Ok(usuarios);
       }
       catch (Exception ex)
       {
         return BadRequest(ex.Message);
       }
     }
-
-
-    // POST api/<DepartamentoController>
+    // POST api/<UsuarioController>
     [HttpPost]
-    public ActionResult Post([FromBody] Departamentos deptos)
+    public ActionResult Post([FromBody] Usuarios usuarios)
     {
       try
       {
-        _context.Add(deptos);
+        _context.Add(usuarios);
         _context.SaveChanges();
         return Ok();
       }
@@ -74,18 +73,18 @@ namespace BEProyectoFinal.Controllers
       }
     }
 
-    // PUT api/<DepartamentoController>/5
+    // PUT api/<UsuarioController>/5
     [HttpPut("{id}")]
-    public ActionResult Put(int id, [FromBody] Departamentos deptos)
+    public ActionResult Put(int id, [FromBody] Usuarios usuarios)
     {
       try
       {
-        if (id != deptos.Id)
+        if (id != usuarios.Id)
         {
           return BadRequest();
         }
-        _context.Entry(deptos).State = EntityState.Modified;
-        _context.Update(deptos);
+        _context.Entry(usuarios).State = EntityState.Modified;
+        _context.Update(usuarios);
         _context.SaveChanges();
         return Ok();
 
@@ -96,18 +95,18 @@ namespace BEProyectoFinal.Controllers
       }
     }
 
-    // DELETE api/<DepartamentoController>/5
+    // DELETE api/<UsuarioController>/5
     [HttpDelete("{id}")]
     public ActionResult Delete(int id)
     {
       try
       {
-        var deptos = _context.Departamentos.Find(id);
-        if (deptos == null)
+        var usuarios = _context.Usuarios.Find(id);
+        if (usuarios == null)
         {
           return NotFound();
         }
-        _context.Remove(deptos);
+        _context.Remove(usuarios);
         _context.SaveChanges();
         return Ok();
       }
@@ -116,8 +115,5 @@ namespace BEProyectoFinal.Controllers
         return BadRequest(ex.Message);
       }
     }
-
-   
-
   }
 }
