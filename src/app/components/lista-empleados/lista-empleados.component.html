@@ -6,20 +6,37 @@
 <br />
 <div class="row" style="padding-top: 10px">
   <div class="col-lg-6">
-    <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
-      <input type="text" nz-input placeholder="input search text" />
+    <nz-input-group [nzPrefix]="prefixTemplateUser">
+      <input
+        type="text"
+        (input)="Search()"
+        [(ngModel)]="nombres"
+        nz-input
+        placeholder="Buscar colaborador"
+      />
     </nz-input-group>
-    <ng-template #suffixIconButton>
-      <button nz-button nzType="primary" nzSearch>
-        <i nz-icon style="padding-bottom: 10px" nzType="search"></i>
-      </button>
-    </ng-template>
+    <ng-template #prefixTemplateUser><i nz-icon nzType="user"></i></ng-template>
   </div>
-  <div class="col-lg-6">
+  <!-- <div class="col-lg-6">
     <button type="button" style="float: inline-end" class="btn btn-primary">
       Agregar Empleado
     </button>
-  </div>
+    
+    //// (click)="showModal()" ponerlo en el button que vaya a llamar al modal
+
+     <nz-modal
+      [(nzVisible)]="isVisible"
+      nzTitle="The first Modal"
+      (nzOnCancel)="handleCancel()"
+      (nzOnOk)="handleOk()"
+    >
+      <ng-container *nzModalContent>
+        <p>Content one</p>
+        <p>Content two</p>
+        <p>Content three</p>
+      </ng-container>
+    </nz-modal> 
+  </div> -->
 </div>
 <div class="spinner-border" role="status" *ngIf="loading">
   <span class="sr-only">Cargando...</span>
@@ -59,7 +76,10 @@
         </button>
       </td>
       <td>
-        <button class="btn btn-danger btn-sm" (click)="delete(empleado.id)">
+        <button
+          class="btn btn-danger btn-sm"
+          (click)="showDeleteConfirm(empleado.id)"
+        >
           Eliminar
         </button>
       </td>

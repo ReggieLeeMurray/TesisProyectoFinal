@@ -7,173 +7,7 @@
   <span class="sr-only">Cargando...</span>
 </div>
 <br />
-<!-- 
-<form [formGroup]="empleadosForm" (ngSubmit)="guardarEmpleados()">
-  <div class="form-row">
-    <div class="form-group col-md-4">
-      <label for="inputNombre">Nombres</label>
-      <input
-        type="text"
-        class="form-control"
-        formControlName="nombre"
-        placeholder="ej. Pablo Lara , Maria Jose"
-      />
-    </div>
-    <span
-      class="text-danger ml-3"
-      *ngIf="
-        empleadosForm.get('nombre').hasError('required') &&
-        empleadosForm.get('nombre').touched
-      "
-    >
-      Los nombres del colaborador son requeridos</span
-    >
-
-    <div class="form-group col-md-4">
-      <label for="inputApellidos" style="padding-top: 10px">Apellidos</label>
-      <input
-        type="text"
-        class="form-control"
-        formControlName="apellido"
-        placeholder="ej. Mendez Hernandez, Romero Sanchez"
-      />
-    </div>
-    <span
-      class="text-danger ml-3"
-      *ngIf="
-        empleadosForm.get('apellido').hasError('required') &&
-        empleadosForm.get('apellido').touched
-      "
-    >
-      Los apellidos del colaborador son requeridos</span
-    >
-  </div>
-  <div class="form-group">
-    <label for="inputDireccion" style="padding-top: 10px"
-      >Direccion Completa</label
-    >
-    <input
-      type="text"
-      class="form-control"
-      formControlName="direccion"
-      placeholder="ej. Colonia, # de Bloque y Casa"
-    />
-  </div>
-  <span
-    class="text-danger ml-3"
-    *ngIf="
-      empleadosForm.get('direccion').hasError('required') &&
-      empleadosForm.get('direccion').touched
-    "
-  >
-    La direccion completa del colaborador es requerida</span
-  >
-  <div class="form-group">
-    <label for="inputFecha" style="padding-top: 10px">Fecha Ingreso</label>
-    <nz-date-picker
-      style="padding-top: 5px"
-      style="padding-bottom: 5px"
-      [(ngModel)]="date"
-      (ngModelChange)="onChange($event)"
-      formControlName="fechaingreso"
-    ></nz-date-picker>
-  </div>
-
-  <span
-    class="text-danger ml-3"
-    *ngIf="
-      empleadosForm.get('fechaingreso').hasError('required') &&
-      empleadosForm.get('fechaingreso').touched
-    "
-  >
-    La fecha de ingreso del colaborador es requerida</span
-  >
-  <div class="form-group col-md-2">
-    <label for="inputCedula" style="padding: top 10px">Número de Cedula</label>
-    <input
-      type="number"
-      class="form-control"
-      formControlName="n_cedula"
-      placeholder="ej. 0501151202154"
-    />
-    <br />
-  </div>
-  <span
-    class="text-danger ml-3"
-    *ngIf="
-      empleadosForm.get('n_cedula').hasError('required') &&
-      empleadosForm.get('n_cedula').touched
-    "
-  >
-    El numero de cedula del colaborador es requerida</span
-  >
-  <div class="form-group col-md-2">
-    <label for="inputDepto" style="padding-top: 10px">Departamento</label>
-    <input
-      type="text"
-      class="form-control"
-      formControlName="depto"
-      placeholder="ej. Contabilidad, etc."
-    />
-  </div>
-  <span
-    class="text-danger ml-3"
-    *ngIf="
-      empleadosForm.get('depto').hasError('required') &&
-      empleadosForm.get('depto').touched
-    "
-  >
-    El departamento en el que colaborador es requerida</span
-  >
-  <div class="form-row">
-    <div class="form-group col-md-1">
-      <label for="inputSalario" style="padding-top: 10px">Salario Neto</label>
-      <input type="number" class="form-control" formControlName="salariobase" />
-    </div>
-    <span
-      class="text-danger ml-3"
-      *ngIf="
-        empleadosForm.get('salariobase').hasError('required') &&
-        empleadosForm.get('salariobase').touched
-      "
-    >
-      El salario del colaborador es requerido</span
-    >
-    <div class="col-lg-6" style="padding-top: 10px">
-      <tr>
-        <td>
-          <button class="btn btn-success" [disabled]="empleadosForm.invalid">
-            {{ accion }} Empleado
-          </button>
-        </td>
-        <td>
-          <button
-            class="btn btn-secondary"
-            style="margin-left: 20px; margin: 10px"
-            [routerLink]="['/']"
-          >
-            Cancelar
-          </button>
-        </td>
-      </tr>
-    </div>
-  </div>
-</form> -->
 <form nz-form [formGroup]="empleadosForm" (ngSubmit)="guardarEmpleados()">
-  <nz-form-item>
-    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="nombres"
-      >Test</nz-form-label
-    >
-    <nz-form-control [nzSm]="14" [nzXs]="24">
-      <input
-        nz-input
-        type="text"
-        formControlName="test"
-        style="width: 90%"
-        placeholder="ej. Pablo Lara , Maria Jose"
-      />
-    </nz-form-control>
-  </nz-form-item>
   <nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="nombres"
       >Nombres</nz-form-label
@@ -240,29 +74,17 @@
   </nz-form-item>
 
   <nz-form-item>
-    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="depto"
-      >Id Depto</nz-form-label
-    >
-    <nz-form-control [nzSm]="14" [nzXs]="24">
-      <input
-        nz-input
-        type="number"
-        formControlName="depto"
-        placeholder="ej. 1,2,3,4"
-      />
-    </nz-form-control>
-  </nz-form-item>
-
-  <!-- <nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24">Departamento</nz-form-label>
-    <nz-select formControlName="depto" nzPlaceHolder="Choose">
+    <nz-select formControlName="depto">
       <nz-option
+        input
+        type="number"
         *ngFor="let departamento of listDeptos"
         nzValue="{{ departamento.id }}"
         nzLabel="{{ departamento.descripcion }}"
       ></nz-option>
     </nz-select>
-  </nz-form-item> -->
+  </nz-form-item>
 
   <nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="salario"
