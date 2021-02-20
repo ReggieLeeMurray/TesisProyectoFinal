@@ -12,7 +12,6 @@ import { ListaEmpleadosComponent } from './components/lista-empleados/lista-empl
 import { ListaUsuariosComponent } from './components/lista-usuarios/lista-usuarios.component';
 import { InformacionComponent } from './components/informacion/informacion.component';
 
-
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { en_US } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
@@ -26,6 +25,8 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzModalModule } from 'ng-zorro-antd/modal';
+import { DepartamentoComponent } from './components/departamento/departamento.component';
+import { NzTableModule } from 'ng-zorro-antd/table';
 
 registerLocaleData(en);
 
@@ -37,6 +38,7 @@ registerLocaleData(en);
     ListaEmpleadosComponent,
     InformacionComponent,
     ListaUsuariosComponent,
+    DepartamentoComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,13 +53,13 @@ registerLocaleData(en);
     NzMenuModule,
     NzFormModule,
     NzButtonModule,
+    NzTableModule,
     NzInputModule,
     NzSelectModule,
     NzDatePickerModule,
-    NzModalModule
+    NzModalModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
-
+export class AppModule {}

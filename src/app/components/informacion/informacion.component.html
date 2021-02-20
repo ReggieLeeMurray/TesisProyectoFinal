@@ -1,27 +1,24 @@
 <div>
   <div class="col-lg-6">
-    <h3>Datos Generales de la Empresa</h3>
+    <h3>Datos</h3>
   </div>
-  <nz-modal
-    [(nzVisible)]="isVisible"
-    nzTitle="The first Modal"
-    (nzOnCancel)="handleCancel()"
-    (nzOnOk)="handleOk()"
-  >
-    <ng-container *nzModalContent>
-      <p>Content one</p>
-      <p>Content two</p>
-      <p>Content three</p>
-    </ng-container>
-  </nz-modal>
+  <br />
+  <tr>
+    <td>
+      <button type="button" class="btn btn-primary btn-lg">
+        Llenar Informacion General
+      </button>
+    </td>
+  </tr>
+
   <tr>
     <td>
       <button
         type="button"
         class="btn btn-primary btn-lg"
-        (click)="showModal()"
+        [routerLink]="['/departamento']"
       >
-        Definir Departamentos
+        Crear Departamentos
       </button>
     </td>
   </tr>

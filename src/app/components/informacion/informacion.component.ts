@@ -8,7 +8,6 @@ import { Component, OnInit } from '@angular/core';
 
 export class InformacionComponent implements OnInit {
   isVisible = false;
-  isVisible1 = false;
   constructor() { }
 
   ngOnInit(): void {

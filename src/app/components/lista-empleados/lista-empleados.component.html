@@ -17,26 +17,6 @@
     </nz-input-group>
     <ng-template #prefixTemplateUser><i nz-icon nzType="user"></i></ng-template>
   </div>
-  <!-- <div class="col-lg-6">
-    <button type="button" style="float: inline-end" class="btn btn-primary">
-      Agregar Empleado
-    </button>
-    
-    //// (click)="showModal()" ponerlo en el button que vaya a llamar al modal
-
-     <nz-modal
-      [(nzVisible)]="isVisible"
-      nzTitle="The first Modal"
-      (nzOnCancel)="handleCancel()"
-      (nzOnOk)="handleOk()"
-    >
-      <ng-container *nzModalContent>
-        <p>Content one</p>
-        <p>Content two</p>
-        <p>Content three</p>
-      </ng-container>
-    </nz-modal> 
-  </div> -->
 </div>
 <div class="spinner-border" role="status" *ngIf="loading">
   <span class="sr-only">Cargando...</span>
@@ -53,7 +33,7 @@
       <th scope="col">Fecha Ingreso</th>
       <th scope="col">Salario Base</th>
       <th scope="col">Id Departamento</th>
-      <th></th>
+      <th>Acciones</th>
       <th></th>
     </tr>
   </thead>
@@ -67,6 +47,7 @@
       <td>{{ empleado.fechaIngreso | date: "dd/MM/yyyy" }}</td>
       <td>{{ empleado.salarioBase }}</td>
       <td>{{ empleado.departamentoID }}</td>
+
       <td>
         <button
           class="btn btn-primary btn-sm"
@@ -74,8 +55,6 @@
         >
           Editar
         </button>
-      </td>
-      <td>
         <button
           class="btn btn-danger btn-sm"
           (click)="showDeleteConfirm(empleado.id)"

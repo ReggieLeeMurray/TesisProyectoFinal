@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
+import {
+  FormGroup,
+  FormBuilder,
+  Validators,
+  FormControl,
+} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Empleado } from 'src/app/models/empleado';
 import { Departamento } from 'src/app/models/departamento';
@@ -26,13 +30,12 @@ export class AgregarEmpleadoComponent implements OnInit {
   isEnglish = false;
   date = null;
 
-
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private empleadosService: EmpleadosService,
     private router: Router,
-    private departamentosService: DepartamentosService,
+    private departamentosService: DepartamentosService
   ) {
     this.empleadosForm = this.fb.group({
       nombre: ['', Validators.required],
@@ -41,7 +44,7 @@ export class AgregarEmpleadoComponent implements OnInit {
       direccion: ['', Validators.required],
       fechaingreso: ['', Validators.required],
       depto: ['', Validators.required],
-      salariobase: ['', Validators.required]
+      salariobase: ['', Validators.required],
     });
     if (+this.route.snapshot.paramMap.get('id') > 0) {
       this.idEmpleado = +this.route.snapshot.paramMap.get('id');
@@ -51,15 +54,14 @@ export class AgregarEmpleadoComponent implements OnInit {
   ngOnInit(): void {
     this.esEditar();
     this.cargarDepto();
-
   }
 
   cargarDepto() {
     this.loading = true;
-    this.departamentosService.getListDeptos().subscribe(data => {
+    this.departamentosService.getListDeptos().subscribe((data) => {
       this.loading = false;
       this.listDeptos = data;
-    })
+    });
   }
 
   guardarEmpleados() {
@@ -71,7 +73,7 @@ export class AgregarEmpleadoComponent implements OnInit {
         direccion: this.empleadosForm.get('direccion').value,
         n_Cedula: this.empleadosForm.get('n_cedula').value,
         salarioBase: this.empleadosForm.get('salariobase').value,
-        departamentoID: parseInt(this.empleadosForm.get('depto').value)
+        departamentoID: parseInt(this.empleadosForm.get('depto').value),
       };
       this.empleadosService.guardarEmpleados(empleado).subscribe((data) => {
         this.router.navigate(['/listado']);
@@ -85,8 +87,7 @@ export class AgregarEmpleadoComponent implements OnInit {
         direccion: this.empleadosForm.get('direccion').value,
         n_Cedula: this.empleadosForm.get('n_cedula').value,
         salarioBase: this.empleadosForm.get('salariobase').value,
-        departamentoID: parseInt(this.empleadosForm.get('depto').value)
-
+        departamentoID: parseInt(this.empleadosForm.get('depto').value),
       };
 
       this.empleadosService
@@ -112,17 +113,14 @@ export class AgregarEmpleadoComponent implements OnInit {
             fechaingreso: data.fechaIngreso,
             direccion: data.direccion,
             salariobase: data.salarioBase,
-
           });
         });
-      this.departamentosService
-        .cargarDeptos(this.idDepto)
-        .subscribe((data) => {
-          this.departamento = data;
-          this.empleadosForm.patchValue({
-            depto: data.id
-          });
+      this.departamentosService.cargarDeptos(this.idDepto).subscribe((data) => {
+        this.departamento = data;
+        this.empleadosForm.patchValue({
+          depto: data.id,
         });
+      });
     }
   }
 
@@ -130,10 +128,7 @@ export class AgregarEmpleadoComponent implements OnInit {
     console.log('onChange: ', result);
   }
 
-
   getWeek(result: Date): void {
     console.log('week: ', getISOWeek(result));
   }
-
-
 }

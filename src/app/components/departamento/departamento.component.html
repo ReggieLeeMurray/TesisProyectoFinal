@@ -1,0 +1,118 @@
+<div class="row" style="padding-top: 10px">
+  <div class="col-lg-6">
+    <h3>Lista de Departamentos</h3>
+  </div>
+</div>
+
+<nz-modal
+  [(nzVisible)]="isVisible"
+  nzTitle="Agregar Departamentos"
+  (nzOnCancel)="handleCancel()"
+  (nzOnOk)="handleOk()"
+>
+  <ng-container *nzModalContent>
+    <form
+      nz-form
+      [formGroup]="departamentosForm"
+      (ngSubmit)="guardarDepartamentos()"
+    >
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="descripcion"
+          >Descripcion</nz-form-label
+        >
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input
+            nz-input
+            type="text"
+            formControlName="descripcion"
+            style="width: 90%"
+            placeholder="ej. Contabilidad , RRHH, Produccion"
+          />
+        </nz-form-control>
+      </nz-form-item>
+      <span
+        class="text-danger ml-3"
+        *ngIf="
+          departamentosForm.get('descripcion').hasError('required') &&
+          departamentosForm.get('descripcion').touched
+        "
+      >
+        El nombre del departamento a guardar es requerido</span
+      >
+      <nz-form-control [nzSpan]="14" [nzOffset]="6">
+        <button
+          nz-button
+          nzType="primary"
+          [disabled]="departamentosForm.invalid"
+        >
+          Guardar Departamento
+        </button>
+      </nz-form-control>
+      <nz-form-control [nzSpan]="14" [nzOffset]="6">
+        <button nz-button nzType="default" [routerLink]="['/']">
+          Cancelar
+        </button>
+      </nz-form-control>
+    </form>
+  </ng-container>
+</nz-modal>
+<br />
+<div class="row" style="padding-top: 10px">
+  <div class="col-lg-6">
+    <tr>
+      <td>
+        <nz-input-group [nzPrefix]="prefixTemplateUser">
+          <input
+            type="text"
+            (input)="Search()"
+            [(ngModel)]="departamentos"
+            nz-input
+            placeholder="Buscar Departamento"
+          />
+        </nz-input-group>
+        <ng-template #prefixTemplateUser
+          ><i nz-icon nzType="user"></i
+        ></ng-template>
+      </td>
+      <td>
+        <button class="btn btn-success btn-lg" (click)="showModal()">
+          Nuevo
+        </button>
+      </td>
+    </tr>
+  </div>
+</div>
+<div class="spinner-border" role="status" *ngIf="loading">
+  <span class="sr-only">Cargando...</span>
+</div>
+<br />
+<div>
+  <tr>
+    <td>
+      <table class="table table-striped" id="myTable">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Descripcion</th>
+            <th scope="col">Accion</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let departamento of listDeptos">
+            <td>{{ departamento.id }}</td>
+            <td>{{ departamento.descripcion }}</td>
+            <td>
+              <button
+                class="btn btn-danger btn-sm"
+                (click)="showDeleteConfirm(departamento.id)"
+              >
+                Eliminar
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+</div>
