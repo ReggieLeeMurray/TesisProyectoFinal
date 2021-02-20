@@ -6,13 +6,11 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AgregarEmpleadoComponent } from './components/agregar-empleado/agregar-empleado.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { NuevoCalculoComponent } from './components/nuevo-calculo/nuevo-calculo.component';
+
 import { AgregarUsuarioComponent } from './components/agregar-usuario/agregar-usuario.component';
 import { ListaEmpleadosComponent } from './components/lista-empleados/lista-empleados.component';
 import { ListaUsuariosComponent } from './components/lista-usuarios/lista-usuarios.component';
-import { VerEmpleadosComponent } from './components/ver-empleados/ver-empleados.component';
-import { VerUsuariosComponent } from './components/ver-usuarios/ver-usuarios.component';
+
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { en_US } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
@@ -33,13 +31,9 @@ registerLocaleData(en);
   declarations: [
     AppComponent,
     AgregarEmpleadoComponent,
-    NavbarComponent,
-    NuevoCalculoComponent,
     AgregarUsuarioComponent,
     ListaEmpleadosComponent,
     ListaUsuariosComponent,
-    VerEmpleadosComponent,
-    VerUsuariosComponent
   ],
   imports: [
     BrowserModule,

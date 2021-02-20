@@ -11,7 +11,7 @@
         }
       },
       "root": "",
-      "sourceRoot": "src",
+      "sourceRoot": "scr",
       "prefix": "app",
       "architect": {
         "build": {
