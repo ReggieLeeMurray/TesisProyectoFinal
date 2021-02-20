@@ -5,11 +5,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AgregarEmpleadoComponent } from './components/agregar-empleado/agregar-empleado.component';
 
+import { AgregarEmpleadoComponent } from './components/agregar-empleado/agregar-empleado.component';
 import { AgregarUsuarioComponent } from './components/agregar-usuario/agregar-usuario.component';
 import { ListaEmpleadosComponent } from './components/lista-empleados/lista-empleados.component';
 import { ListaUsuariosComponent } from './components/lista-usuarios/lista-usuarios.component';
+import { InformacionComponent } from './components/informacion/informacion.component';
+
 
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { en_US } from 'ng-zorro-antd/i18n';
@@ -33,6 +35,7 @@ registerLocaleData(en);
     AgregarEmpleadoComponent,
     AgregarUsuarioComponent,
     ListaEmpleadosComponent,
+    InformacionComponent,
     ListaUsuariosComponent,
   ],
   imports: [
@@ -41,6 +44,7 @@ registerLocaleData(en);
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
+
     BrowserAnimationsModule,
     IconsProviderModule,
     NzLayoutModule,

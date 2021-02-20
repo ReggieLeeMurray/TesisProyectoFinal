@@ -1,0 +1,44 @@
+<div>
+  <div class="col-lg-6">
+    <h3>Datos Generales de la Empresa</h3>
+  </div>
+  <nz-modal
+    [(nzVisible)]="isVisible"
+    nzTitle="The first Modal"
+    (nzOnCancel)="handleCancel()"
+    (nzOnOk)="handleOk()"
+  >
+    <ng-container *nzModalContent>
+      <p>Content one</p>
+      <p>Content two</p>
+      <p>Content three</p>
+    </ng-container>
+  </nz-modal>
+  <tr>
+    <td>
+      <button
+        type="button"
+        class="btn btn-primary btn-lg"
+        (click)="showModal()"
+      >
+        Definir Departamentos
+      </button>
+    </td>
+  </tr>
+  <br />
+  <tr>
+    <td>
+      <button type="button" class="btn btn-primary btn-lg">
+        Crear Planillas
+      </button>
+    </td>
+  </tr>
+  <br />
+  <tr>
+    <td>
+      <button type="button" class="btn btn-primary btn-lg">
+        Agregar Empleados a Planillas
+      </button>
+    </td>
+  </tr>
+</div>
