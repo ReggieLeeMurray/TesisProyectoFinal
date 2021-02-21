@@ -36,13 +36,7 @@ export class DepartamentoComponent implements OnInit {
     this.isVisible = true;
   }
 
-  handleOk(): void {
-    console.log('Button ok clicked!');
-    this.isVisible = false;
-  }
-
   handleCancel(): void {
-    console.log('Button cancel clicked!');
     this.isVisible = false;
   }
   ngOnInit(): void {
@@ -54,8 +48,10 @@ export class DepartamentoComponent implements OnInit {
     };
     this.DepartamentosService.guardarDeptos(departamento).subscribe((data) => {
       this.router.navigate(['/departamento']);
+      this.cargarDepto();
     });
     console.log(this.departamentosForm);
+    this.isVisible = false;
   }
   cargarDepto() {
     this.loading = true;
@@ -86,6 +82,18 @@ export class DepartamentoComponent implements OnInit {
   }
 
   showDeleteConfirm(id): void {
+    this.modal.confirm({
+      nzTitle: '¿Esta seguro que desea eliminar este departamento?',
+      nzContent: '<b style="color: red;">Esta accion es permanente.</b>',
+      nzOkText: 'Yes',
+      nzOkType: 'primary',
+      nzOkDanger: true,
+      nzOnOk: () => this.delete(id),
+      nzCancelText: 'No',
+      nzOnCancel: () => console.log('Cancel'),
+    });
+  }
+  showAddConfirm(id): void {
     this.modal.confirm({
       nzTitle: '¿Esta seguro que desea eliminar este departamento?',
       nzContent: '<b style="color: red;">Esta accion es permanente.</b>',

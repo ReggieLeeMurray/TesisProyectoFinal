@@ -22,6 +22,7 @@
   <span class="sr-only">Cargando...</span>
 </div>
 <br />
+
 <table class="table table-sm table-hover">
   <thead>
     <tr>
@@ -38,7 +39,9 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let empleado of listEmpleados">
+    <tr
+      *ngFor="let empleado of listEmpleados | paginate: page_size:page_number"
+    >
       <td>{{ empleado.id }}</td>
       <td>{{ empleado.nombres }}</td>
       <td>{{ empleado.apellidos }}</td>
@@ -65,3 +68,11 @@
     </tr>
   </tbody>
 </table>
+<mat-paginator
+  [length]="listEmpleados.length"
+  [pageIndex]="1"
+  [pageSize]="page_size"
+  [pageSizeOptions]="pageSizeOptions"
+  (page)="handlePage($event)"
+>
+</mat-paginator>

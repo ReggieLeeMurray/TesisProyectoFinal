@@ -8,14 +8,10 @@
   [(nzVisible)]="isVisible"
   nzTitle="Agregar Departamentos"
   (nzOnCancel)="handleCancel()"
-  (nzOnOk)="handleOk()"
+  (nzOnOk)="guardarDepartamentos()"
 >
   <ng-container *nzModalContent>
-    <form
-      nz-form
-      [formGroup]="departamentosForm"
-      (ngSubmit)="guardarDepartamentos()"
-    >
+    <form nz-form [formGroup]="departamentosForm">
       <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="descripcion"
           >Descripcion</nz-form-label
@@ -39,20 +35,6 @@
       >
         El nombre del departamento a guardar es requerido</span
       >
-      <nz-form-control [nzSpan]="14" [nzOffset]="6">
-        <button
-          nz-button
-          nzType="primary"
-          [disabled]="departamentosForm.invalid"
-        >
-          Guardar Departamento
-        </button>
-      </nz-form-control>
-      <nz-form-control [nzSpan]="14" [nzOffset]="6">
-        <button nz-button nzType="default" [routerLink]="['/']">
-          Cancelar
-        </button>
-      </nz-form-control>
     </form>
   </ng-container>
 </nz-modal>

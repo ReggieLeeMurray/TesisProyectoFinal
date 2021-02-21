@@ -27,6 +27,9 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { DepartamentoComponent } from './components/departamento/departamento.component';
 import { NzTableModule } from 'ng-zorro-antd/table';
+import { NominaComponent } from './components/nomina/nomina.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { PaginatePipe } from './pipes/paginate.pipe';
 
 registerLocaleData(en);
 
@@ -39,6 +42,8 @@ registerLocaleData(en);
     InformacionComponent,
     ListaUsuariosComponent,
     DepartamentoComponent,
+    NominaComponent,
+    PaginatePipe,
   ],
   imports: [
     BrowserModule,
@@ -58,6 +63,7 @@ registerLocaleData(en);
     NzSelectModule,
     NzDatePickerModule,
     NzModalModule,
+    MatPaginatorModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent],

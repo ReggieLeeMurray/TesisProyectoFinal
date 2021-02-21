@@ -5,6 +5,7 @@ import { DepartamentosService } from 'src/app/services/departamentos.service';
 import { NzButtonSize } from 'ng-zorro-antd/button';
 import { Departamento } from 'src/app/models/departamento';
 import { NzModalService } from 'ng-zorro-antd/modal';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-lista-empleados',
@@ -17,16 +18,23 @@ export class ListaEmpleadosComponent implements OnInit {
   loading = false;
   size: NzButtonSize = 'large';
   nombres;
+  page_size: number = 12;
+  page_number: number = 1;
+  pageSizeOptions = [3, 6, 10, 12];
 
   constructor(
     private EmpleadosService: EmpleadosService,
     private DepartamentosService: DepartamentosService,
     private modal: NzModalService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.cargarEmpleado();
     this.cargarDepto();
+  }
+  handlePage(e: PageEvent) {
+    this.page_size = e.pageSize;
+    this.page_number = e.pageIndex + 1;
   }
 
   cargarDepto() {
@@ -54,13 +62,13 @@ export class ListaEmpleadosComponent implements OnInit {
   }
 
   Search() {
-    if (this.nombres != "") {
+    if (this.nombres != '') {
       this.listEmpleados = this.listEmpleados.filter((res) => {
         return res.nombres
           .toLocaleLowerCase()
           .match(this.nombres.toLocaleLowerCase());
       });
-    } else if (this.nombres == "") {
+    } else if (this.nombres == '') {
       this.ngOnInit();
     }
   }
@@ -74,11 +82,12 @@ export class ListaEmpleadosComponent implements OnInit {
       nzOkDanger: true,
       nzOnOk: () => this.delete(id),
       nzCancelText: 'No',
-      nzOnCancel: () => console.log('Cancel')
+      nzOnCancel: () => console.log('Cancel'),
     });
   }
 }
 
-export class NzDemoInputpreSuffixComponent { }
-export class NzDemoButtonSizeComponent { }
-export class NzDemoModalConfirmComponent { }
+export class NzDemoInputpreSuffixComponent {}
+export class NzDemoButtonSizeComponent {}
+export class NzDemoModalConfirmComponent {}
+export class NzDemoPaginationMoreComponent {}
