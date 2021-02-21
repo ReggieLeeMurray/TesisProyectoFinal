@@ -8,8 +8,10 @@ import {
 import { ActivatedRoute, Router } from '@angular/router';
 import { Empleado } from 'src/app/models/empleado';
 import { Departamento } from 'src/app/models/departamento';
+import { TipoPlanilla } from 'src/app/models/tipoplanilla';
 import { EmpleadosService } from 'src/app/services/empleados.service';
 import { DepartamentosService } from 'src/app/services/departamentos.service';
+import { TipoplanillaService } from 'src/app/services/tipoplanilla.service';
 import getISOWeek from 'date-fns/getISOWeek';
 
 @Component({
@@ -21,12 +23,15 @@ export class AgregarEmpleadoComponent implements OnInit {
   empleadosForm: FormGroup;
   idEmpleado = 0;
   idDepto = 0;
+  idTP = 0;
   temporal = 0;
   accion = 'Agregar';
   loading = false;
   empleado: Empleado;
   departamento: Departamento;
+  tp: TipoPlanilla;
   listDeptos: Departamento[];
+  listTP: TipoPlanilla[];
   isEnglish = false;
   date = null;
 
@@ -35,7 +40,8 @@ export class AgregarEmpleadoComponent implements OnInit {
     private route: ActivatedRoute,
     private empleadosService: EmpleadosService,
     private router: Router,
-    private departamentosService: DepartamentosService
+    private departamentosService: DepartamentosService,
+    private TipoplanillaService: TipoplanillaService
   ) {
     this.empleadosForm = this.fb.group({
       nombre: ['', Validators.required],
@@ -45,6 +51,7 @@ export class AgregarEmpleadoComponent implements OnInit {
       fechaingreso: ['', Validators.required],
       depto: ['', Validators.required],
       salariobase: ['', Validators.required],
+      tplanilla: ['', Validators.required],
     });
     if (+this.route.snapshot.paramMap.get('id') > 0) {
       this.idEmpleado = +this.route.snapshot.paramMap.get('id');
@@ -54,6 +61,7 @@ export class AgregarEmpleadoComponent implements OnInit {
   ngOnInit(): void {
     this.esEditar();
     this.cargarDepto();
+    this.cargarTP();
   }
 
   cargarDepto() {
@@ -61,6 +69,14 @@ export class AgregarEmpleadoComponent implements OnInit {
     this.departamentosService.getListDeptos().subscribe((data) => {
       this.loading = false;
       this.listDeptos = data;
+    });
+  }
+
+  cargarTP() {
+    this.loading = true;
+    this.TipoplanillaService.getListTipoPlanilla().subscribe((data) => {
+      this.loading = false;
+      this.listTP = data;
     });
   }
 
@@ -74,6 +90,7 @@ export class AgregarEmpleadoComponent implements OnInit {
         n_Cedula: this.empleadosForm.get('n_cedula').value,
         salarioBase: this.empleadosForm.get('salariobase').value,
         departamentoID: parseInt(this.empleadosForm.get('depto').value),
+        planillaID: parseInt(this.empleadosForm.get('tplanilla').value),
       };
       this.empleadosService.guardarEmpleados(empleado).subscribe((data) => {
         this.router.navigate(['/listado']);
@@ -88,6 +105,7 @@ export class AgregarEmpleadoComponent implements OnInit {
         n_Cedula: this.empleadosForm.get('n_cedula').value,
         salarioBase: this.empleadosForm.get('salariobase').value,
         departamentoID: parseInt(this.empleadosForm.get('depto').value),
+        planillaID: parseInt(this.empleadosForm.get('tplanilla').value),
       };
 
       this.empleadosService
@@ -121,6 +139,14 @@ export class AgregarEmpleadoComponent implements OnInit {
           depto: data.id,
         });
       });
+      this.TipoplanillaService.cargarTipoPlanilla(this.idTP).subscribe(
+        (data) => {
+          this.tp = data;
+          this.empleadosForm.patchValue({
+            planillaID: data.id,
+          });
+        }
+      );
     }
   }
 
