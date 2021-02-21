@@ -81,7 +81,11 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let departamento of listDeptos">
+          <tr
+            *ngFor="
+              let departamento of listDeptos | paginate: page_size:page_number
+            "
+          >
             <td>{{ departamento.id }}</td>
             <td>{{ departamento.descripcion }}</td>
             <td>
@@ -95,6 +99,14 @@
           </tr>
         </tbody>
       </table>
+      <mat-paginator
+        [length]="listDeptos.length"
+        [pageIndex]="1"
+        [pageSize]="page_size"
+        [pageSizeOptions]="pageSizeOptions"
+        (page)="handlePage($event)"
+      >
+      </mat-paginator>
     </td>
   </tr>
 </div>

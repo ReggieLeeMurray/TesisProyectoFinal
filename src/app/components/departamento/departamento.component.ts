@@ -4,7 +4,7 @@ import { Departamento } from 'src/app/models/departamento';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import { PageEvent } from '@angular/material/paginator';
 @Component({
   selector: 'app-departamento',
   templateUrl: './departamento.component.html',
@@ -17,6 +17,9 @@ export class DepartamentoComponent implements OnInit {
   idDepto = 0;
   departamentos;
   isVisible = false;
+  page_size: number = 10;
+  page_number: number = 1;
+  pageSizeOptions = [3, 6, 10];
 
   constructor(
     private fb: FormBuilder,
@@ -34,6 +37,10 @@ export class DepartamentoComponent implements OnInit {
   }
   showModal(): void {
     this.isVisible = true;
+  }
+  handlePage(e: PageEvent) {
+    this.page_size = e.pageSize;
+    this.page_number = e.pageIndex + 1;
   }
 
   handleCancel(): void {
