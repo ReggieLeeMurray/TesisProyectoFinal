@@ -1,21 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { DepartamentosService } from 'src/app/services/departamentos.service';
-import { Departamento } from 'src/app/models/departamento';
+import { TipoplanillaService } from 'src/app/services/tipoplanilla.service';
+import { TipoPlanilla } from 'src/app/models/tipoplanilla';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PageEvent } from '@angular/material/paginator';
+
 @Component({
-  selector: 'app-departamento',
-  templateUrl: './departamento.component.html',
-  styleUrls: ['./departamento.component.css'],
+  selector: 'app-tipoplanilla',
+  templateUrl: './tipoplanilla.component.html',
+  styleUrls: ['./tipoplanilla.component.css'],
 })
-export class DepartamentoComponent implements OnInit {
-  departamentosForm: FormGroup;
-  listDeptos: Departamento[];
+export class TipoplanillaComponent implements OnInit {
+  TPForm: FormGroup;
+  listTP: TipoPlanilla[];
   loading = false;
-  idDepto = 0;
-  departamentos;
+  idTP = 0;
+  TP;
   isVisible = false;
   page_size: number = 10;
   page_number: number = 1;
@@ -25,16 +26,17 @@ export class DepartamentoComponent implements OnInit {
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private DepartamentosService: DepartamentosService,
+    private TipoplanillaService: TipoplanillaService,
     private modal: NzModalService
   ) {
-    this.departamentosForm = this.fb.group({
+    this.TPForm = this.fb.group({
       descripcion: ['', Validators.required],
     });
     if (+this.route.snapshot.paramMap.get('id') > 0) {
-      this.idDepto = +this.route.snapshot.paramMap.get('id');
+      this.idTP = +this.route.snapshot.paramMap.get('id');
     }
   }
+
   showModal(): void {
     this.isVisible = true;
   }
@@ -47,50 +49,52 @@ export class DepartamentoComponent implements OnInit {
     this.isVisible = false;
   }
   ngOnInit(): void {
-    this.cargarDepto();
+    this.cargarTP();
   }
-  guardarDepartamentos() {
-    const departamento: Departamento = {
-      descripcion: this.departamentosForm.get('descripcion').value,
+  guardarTP() {
+    const departamento: TipoPlanilla = {
+      descripcion: this.TPForm.get('descripcion').value,
     };
-    this.DepartamentosService.guardarDeptos(departamento).subscribe((data) => {
-      this.router.navigate(['/departamento']);
-      this.cargarDepto();
-    });
-    console.log(this.departamentosForm);
+    this.TipoplanillaService.guardarTipoPlanilla(departamento).subscribe(
+      (data) => {
+        this.router.navigate(['/TipoPlanilla']);
+        this.cargarTP();
+      }
+    );
+    console.log(this.TPForm);
     this.isVisible = false;
   }
-  cargarDepto() {
+  cargarTP() {
     this.loading = true;
-    this.DepartamentosService.getListDeptos().subscribe((data) => {
+    this.TipoplanillaService.getListTipoPlanilla().subscribe((data) => {
       this.loading = false;
-      this.listDeptos = data;
+      this.listTP = data;
     });
   }
 
   delete(id: number) {
     this.loading = true;
-    this.DepartamentosService.deleteDeptos(id).subscribe((data) => {
-      this.cargarDepto();
+    this.TipoplanillaService.deleteTipoPlanilla(id).subscribe((data) => {
+      this.cargarTP();
       this.loading = false;
     });
   }
 
   Search() {
-    if (this.departamentos != '') {
-      this.listDeptos = this.listDeptos.filter((res) => {
+    if (this.TP != '') {
+      this.listTP = this.listTP.filter((res) => {
         return res.descripcion
           .toLocaleLowerCase()
-          .match(this.departamentos.toLocaleLowerCase());
+          .match(this.TP.toLocaleLowerCase());
       });
-    } else if (this.departamentos == '') {
+    } else if (this.TP == '') {
       this.ngOnInit();
     }
   }
 
   showDeleteConfirm(id): void {
     this.modal.confirm({
-      nzTitle: '¿Esta seguro que desea eliminar este departamento?',
+      nzTitle: '¿Esta seguro que desea eliminar este tipo de planilla?',
       nzContent: '<b style="color: red;">Esta accion es permanente.</b>',
       nzOkText: 'Yes',
       nzOkType: 'primary',

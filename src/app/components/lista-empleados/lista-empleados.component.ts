@@ -20,7 +20,7 @@ export class ListaEmpleadosComponent implements OnInit {
   nombres;
   page_size: number = 12;
   page_number: number = 1;
-  pageSizeOptions = [3, 6, 10, 12];
+  pageSizeOptions = [12];
 
   constructor(
     private EmpleadosService: EmpleadosService,

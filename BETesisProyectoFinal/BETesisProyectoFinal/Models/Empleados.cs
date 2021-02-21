@@ -26,5 +26,8 @@ namespace BETesisProyectoFinal.Models
     public int DepartamentoID { get; set; }
     [ForeignKey("DepartamentoID")]
     public Departamentos Departamentos { get; set; }
+    public int PlanillaID { get; set; }
+    [ForeignKey("PlanillaID")]
+    public TipoPlanillas TipoPlanillas { get; set; }
   }
 }

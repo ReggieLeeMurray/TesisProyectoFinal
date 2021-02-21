@@ -47,6 +47,21 @@ namespace BEProyectoFinal.Migrations
                     b.ToTable("Roles");
                 });
 
+            modelBuilder.Entity("BEProyectoFinal.Models.TipoPlanillas", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Descripcion")
+                        .IsRequired()
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TipoPlanillas");
+                });
+
             modelBuilder.Entity("BEProyectoFinal.Models.Usuarios", b =>
                 {
                     b.Property<int>("Id")
@@ -103,12 +118,17 @@ namespace BEProyectoFinal.Migrations
                         .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
+                    b.Property<int>("PlanillaID")
+                        .HasColumnType("int");
+
                     b.Property<int>("SalarioBase")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("DepartamentoID");
+
+                    b.HasIndex("PlanillaID");
 
                     b.ToTable("Empleados");
                 });
@@ -127,6 +147,12 @@ namespace BEProyectoFinal.Migrations
                     b.HasOne("BEProyectoFinal.Models.Departamentos", "Departamentos")
                         .WithMany()
                         .HasForeignKey("DepartamentoID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BEProyectoFinal.Models.TipoPlanillas", "TipoPlanillas")
+                        .WithMany()
+                        .HasForeignKey("PlanillaID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

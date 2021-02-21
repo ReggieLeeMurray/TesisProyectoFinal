@@ -1,6 +1,8 @@
 <div>
-  <div class="col-lg-6">
-    <h3>Datos</h3>
+  <div class="form-group-row">
+    <div class="col-lg-6">
+      <h1>Datos Importantes</h1>
+    </div>
   </div>
   <br />
   <tr>
@@ -10,7 +12,7 @@
       </button>
     </td>
   </tr>
-
+  <br />
   <tr>
     <td>
       <button
@@ -25,7 +27,11 @@
   <br />
   <tr>
     <td>
-      <button type="button" class="btn btn-primary btn-lg">
+      <button
+        type="button"
+        class="btn btn-primary btn-lg"
+        [routerLink]="['/tplanilla']"
+      >
         Crear Planillas
       </button>
     </td>

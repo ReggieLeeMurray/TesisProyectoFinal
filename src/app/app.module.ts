@@ -30,6 +30,7 @@ import { NzTableModule } from 'ng-zorro-antd/table';
 import { NominaComponent } from './components/nomina/nomina.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { PaginatePipe } from './pipes/paginate.pipe';
+import { TipoplanillaComponent } from './components/tipoplanilla/tipoplanilla.component';
 
 registerLocaleData(en);
 
@@ -44,6 +45,7 @@ registerLocaleData(en);
     DepartamentoComponent,
     NominaComponent,
     PaginatePipe,
+    TipoplanillaComponent,
   ],
   imports: [
     BrowserModule,

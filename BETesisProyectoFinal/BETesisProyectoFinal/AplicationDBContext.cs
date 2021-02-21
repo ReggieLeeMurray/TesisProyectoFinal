@@ -14,6 +14,7 @@ namespace BEProyectoFinal
 
     public DbSet<Departamentos> Departamentos { get; set; }
     public DbSet<Usuarios> Usuarios { get; set; }
+    public DbSet<TipoPlanillas> TipoPlanillas { get; set; }
 
     public DbSet<Roles> Roles { get; set; }
 

@@ -15,6 +15,7 @@
     <nz-form-control [nzSm]="14" [nzXs]="24">
       <input
         nz-input
+        id="nombre"
         type="text"
         formControlName="nombre"
         style="width: 90%"
@@ -32,6 +33,7 @@
     Los nombres del colaborador son requeridos</span
   >
   <nz-form-item>
+    <br />
     <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="apellidos"
       >Apellidos</nz-form-label
     >
@@ -72,19 +74,21 @@
       />
     </nz-form-control>
   </nz-form-item>
-
   <nz-form-item>
-    <nz-form-label [nzSm]="6" [nzXs]="24">Departamento</nz-form-label>
-    <nz-select formControlName="depto">
-      <nz-option
-        input
-        type="number"
-        *ngFor="let departamento of listDeptos"
-        nzValue="{{ departamento.id }}"
-        nzLabel="{{ departamento.descripcion }}"
-      ></nz-option>
-    </nz-select>
-  </nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="depto"
+      >Departamento</nz-form-label
+    >
+
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <nz-select formControlName="depto">
+        <nz-option
+          type="number"
+          *ngFor="let departamento of listDeptos"
+          nzValue="{{ departamento.id }}"
+          nzLabel="{{ departamento.descripcion }}"
+        ></nz-option>
+      </nz-select> </nz-form-control
+  ></nz-form-item>
 
   <nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="salario"
