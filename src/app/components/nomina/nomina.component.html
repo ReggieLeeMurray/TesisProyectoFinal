@@ -1,0 +1,169 @@
+<div class="row" style="padding-top: 10px">
+  <div class="col-lg-6">
+    <h3>Nuevo Calculo</h3>
+  </div>
+</div>
+
+<br />
+<div>
+  <tr>
+    <td>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="planilla"
+          >Planilla</nz-form-label
+        ><nz-select nzShowSearch nzAllowClear>
+          <nz-option nzLabel="Jack" nzValue="jack"></nz-option>
+          <nz-option nzLabel="Lucy" nzValue="lucy"></nz-option>
+          <nz-option
+            nzLabel="Tom"
+            nzValue="tom"
+          ></nz-option> </nz-select></nz-form-item
+      ><nz-form-item
+        ><nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="empleado"
+          >Empleado</nz-form-label
+        ><nz-select nzShowSearch nzAllowClear>
+          <nz-option nzLabel="Jack" nzValue="jack"></nz-option>
+          <nz-option nzLabel="Lucy" nzValue="lucy"></nz-option>
+          <nz-option nzLabel="Tom" nzValue="tom"></nz-option> </nz-select
+      ></nz-form-item>
+
+      <form nz-form>
+        <nz-form-item>
+          <nz-time-picker
+            [nzUse12Hours]="true"
+            nzFormat="h:mm a"
+          ></nz-time-picker>
+          <nz-time-picker
+            [nzUse12Hours]="true"
+            nzFormat="h:mm a"
+          ></nz-time-picker>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-time-picker
+            [nzUse12Hours]="true"
+            nzFormat="h:mm a"
+          ></nz-time-picker>
+          <nz-time-picker
+            [nzUse12Hours]="true"
+            nzFormat="h:mm a"
+          ></nz-time-picker>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-time-picker
+            [nzUse12Hours]="true"
+            nzFormat="h:mm a"
+          ></nz-time-picker>
+          <nz-time-picker
+            [nzUse12Hours]="true"
+            nzFormat="h:mm a"
+          ></nz-time-picker>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-time-picker
+            [nzUse12Hours]="true"
+            nzFormat="h:mm a"
+          ></nz-time-picker>
+          <nz-time-picker
+            [nzUse12Hours]="true"
+            nzFormat="h:mm a"
+          ></nz-time-picker>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-time-picker
+            [nzUse12Hours]="true"
+            nzFormat="h:mm a"
+          ></nz-time-picker>
+          <nz-time-picker
+            [nzUse12Hours]="true"
+            nzFormat="h:mm a"
+          ></nz-time-picker>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-time-picker
+            [nzUse12Hours]="true"
+            nzFormat="h:mm a"
+          ></nz-time-picker>
+          <nz-time-picker
+            [nzUse12Hours]="true"
+            nzFormat="h:mm a"
+          ></nz-time-picker>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-time-picker
+            [nzUse12Hours]="true"
+            nzFormat="h:mm a"
+          ></nz-time-picker>
+          <nz-time-picker
+            [nzUse12Hours]="true"
+            nzFormat="h:mm a"
+          ></nz-time-picker>
+        </nz-form-item>
+        <nz-form-item>
+          <button nz-button nzType="primary">Agregar</button>
+        </nz-form-item>
+        <nz-form-item>
+          <button nz-button nzType="default" [routerLink]="['/']">
+            Cancelar
+          </button>
+        </nz-form-item>
+      </form>
+    </td>
+
+    <td>
+      <form nz-form>
+        <table class="table table-sm table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Horas Trabajadas</th>
+              <th scope="col">Diurnas</th>
+              <th scope="col">Mixtas</th>
+              <th scope="col">Nocturnas</th>
+              <th>Acciones</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="col">Horas Trabajadas</th>
+              <th scope="col">Diurnas</th>
+              <th scope="col">Mixtas</th>
+              <th scope="col">Nocturnas</th>
+              <td>
+                <button class="btn btn-primary btn-sm">Editar</button>
+                <button class="btn btn-danger btn-sm">Eliminar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+    </td>
+    <td>
+      <form nz-form>
+        <table class="table table-sm table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Empleado</th>
+              <th scope="col">Calculo</th>
+              <th scope="col">Septimo dia</th>
+              <th scope="col">Incapacidad</th>
+              <th>Acciones</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="col">Empleado</th>
+              <th scope="col">Calculo</th>
+              <th scope="col">Septimo dia</th>
+              <th scope="col">Incapacidad</th>
+              <td>
+                <button class="btn btn-primary btn-sm">Editar</button>
+                <button class="btn btn-danger btn-sm">Eliminar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+    </td>
+  </tr>
+</div>

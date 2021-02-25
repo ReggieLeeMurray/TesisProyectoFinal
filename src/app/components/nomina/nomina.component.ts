@@ -3,13 +3,20 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-nomina',
   templateUrl: './nomina.component.html',
-  styleUrls: ['./nomina.component.css']
+  styleUrls: ['./nomina.component.css'],
 })
 export class NominaComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
+  ngOnInit(): void {}
+}
+export class NzDemoTimePickerUse12HoursComponent {
+  time: Date | null = null;
 
-  ngOnInit(): void {
+  log(value: Date): void {
+    console.log(value);
   }
-
+}
+export class NzDemoSelectSearchComponent {
+  selectedValue = null;
 }

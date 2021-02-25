@@ -11,7 +11,7 @@ import { AgregarUsuarioComponent } from './components/agregar-usuario/agregar-us
 import { ListaEmpleadosComponent } from './components/lista-empleados/lista-empleados.component';
 import { ListaUsuariosComponent } from './components/lista-usuarios/lista-usuarios.component';
 import { InformacionComponent } from './components/informacion/informacion.component';
-
+import { NzTimePickerModule } from 'ng-zorro-antd/time-picker';
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { en_US } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
@@ -53,7 +53,7 @@ registerLocaleData(en);
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-
+    NzTimePickerModule,
     BrowserAnimationsModule,
     IconsProviderModule,
     NzLayoutModule,

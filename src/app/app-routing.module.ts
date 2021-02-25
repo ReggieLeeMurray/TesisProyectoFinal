@@ -5,11 +5,13 @@ import { ListaEmpleadosComponent } from './components/lista-empleados/lista-empl
 import { InformacionComponent } from './components/informacion/informacion.component';
 import { DepartamentoComponent } from './components/departamento/departamento.component';
 import { TipoplanillaComponent } from './components/tipoplanilla/tipoplanilla.component';
+import { NominaComponent } from './components/nomina/nomina.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/informacion' },
   { path: 'informacion', component: InformacionComponent },
   { path: 'tplanilla', component: TipoplanillaComponent },
+  { path: 'calculo', component: NominaComponent },
   { path: 'agregar', component: AgregarEmpleadoComponent },
   { path: 'editar/:id', component: AgregarEmpleadoComponent },
   { path: 'departamento', component: DepartamentoComponent },
