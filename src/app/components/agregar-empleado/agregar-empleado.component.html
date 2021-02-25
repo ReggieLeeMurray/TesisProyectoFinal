@@ -90,7 +90,21 @@
         ></nz-option>
       </nz-select> </nz-form-control
   ></nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="tplanilla"
+      >Planilla</nz-form-label
+    >
 
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <nz-select formControlName="tplanilla">
+        <nz-option
+          type="number"
+          *ngFor="let tp of listTP"
+          nzValue="{{ tp.id }}"
+          nzLabel="{{ tp.descripcion }}"
+        ></nz-option>
+      </nz-select> </nz-form-control
+  ></nz-form-item>
   <nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="salario"
       >Salario</nz-form-label
@@ -110,22 +124,6 @@
     >
     </nz-date-picker>
   </nz-form-item>
-  <nz-form-item>
-    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="tplanilla"
-      >Planilla</nz-form-label
-    >
-
-    <nz-form-control [nzSm]="14" [nzXs]="24">
-      <nz-select formControlName="tplanilla">
-        <nz-option
-          type="number"
-          *ngFor="let tp of listTP"
-          nzValue="{{ tp.id }}"
-          nzLabel="{{ tp.descripcion }}"
-        ></nz-option>
-      </nz-select> </nz-form-control
-  ></nz-form-item>
-
   <nz-form-control [nzSpan]="14" [nzOffset]="6">
     <button nz-button nzType="primary" [disabled]="empleadosForm.invalid">
       {{ accion }} Empleado

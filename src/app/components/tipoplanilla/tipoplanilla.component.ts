@@ -52,15 +52,13 @@ export class TipoplanillaComponent implements OnInit {
     this.cargarTP();
   }
   guardarTP() {
-    const departamento: TipoPlanilla = {
+    const TP: TipoPlanilla = {
       descripcion: this.TPForm.get('descripcion').value,
     };
-    this.TipoplanillaService.guardarTipoPlanilla(departamento).subscribe(
-      (data) => {
-        this.router.navigate(['/TipoPlanilla']);
-        this.cargarTP();
-      }
-    );
+    this.TipoplanillaService.guardarTipoPlanilla(TP).subscribe((data) => {
+      this.router.navigate(['/tplanilla']);
+      this.cargarTP();
+    });
     console.log(this.TPForm);
     this.isVisible = false;
   }
@@ -95,7 +93,8 @@ export class TipoplanillaComponent implements OnInit {
   showDeleteConfirm(id): void {
     this.modal.confirm({
       nzTitle: '¿Esta seguro que desea eliminar este tipo de planilla?',
-      nzContent: '<b style="color: red;">Esta accion es permanente.</b>',
+      nzContent:
+        '<b style="color: red;">ADVERTENCIA: Esta accion es permanente y se eliminaran todos los colaboradores dentro de la misma.</b>',
       nzOkText: 'Yes',
       nzOkType: 'primary',
       nzOkDanger: true,
